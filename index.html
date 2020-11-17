@@ -136,7 +136,7 @@ section {
 </style>
 <script>
 $(document).ready(function() {
-	$(".countdown").countdown({until: new Date("2020-08-08 16:00:00 +2"), compact: true}).show().before("(").after(")");
+	$(".countdown").countdown({until: new Date(2020, 8, 8, 15, 0, 0), compact: true}).show().before("(").after(")");
 
 	$("#location").click(function() {
 		$("#location iframe").css("pointer-events", "auto");
