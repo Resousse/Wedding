@@ -7,7 +7,7 @@ import urllib.parse
 
 class handler(BaseHTTPRequestHandler):
   def do_POST(self):
-    
+    status = False
     try:
         length = int(self.headers.get('content-length', 0))
         body = self.rfile.read(length)
@@ -28,16 +28,16 @@ class handler(BaseHTTPRequestHandler):
             urllab = urllab.format(rep['id'], stat)
             s = requests.post(urllab)
             if s:
-                self.wfile.write(str("OK").encode("utf-8"))
-                self.send_response(200)
-                self.send_header('Content-type', 'text/plain')
-                self.end_headers()
-                return
+                status = True
     except:
         pass
-    self.wfile.write(str("KO").encode("utf-8"))
-    self.send_response(404)
-    self.send_header('Content-type', 'text/plain')
+    if status:
+        self.wfile.write(str("OK").encode("utf-8"))
+        self.send_response(200)
+    else:
+        self.wfile.write(str("KO").encode("utf-8"))
+        self.send_response(404)
+    self.send_header('Content-Type', 'text/plain')
     self.end_headers()
 
 if __name__ == "__main__":
