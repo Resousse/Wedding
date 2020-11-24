@@ -32,14 +32,16 @@ class handler(BaseHTTPRequestHandler):
     except:
         pass
     
-    self.send_header('Content-Type', 'text/plain')
+   
     if status:
         self.send_response(200)
-        self.end_headers()
-        self.wfile.write(str("OK").encode("utf-8"))
     else:
         self.send_response(404)
-        self.end_headers()
+    self.send_header('Content-type', 'text/plain')
+    self.end_headers()
+    if status:
+        self.wfile.write(str("OK").encode("utf-8"))
+    else:
         self.wfile.write(str("KO").encode("utf-8"))
     
 if __name__ == "__main__":
