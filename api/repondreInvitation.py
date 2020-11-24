@@ -31,15 +31,17 @@ class handler(BaseHTTPRequestHandler):
                 status = True
     except:
         pass
-    if status:
-        self.wfile.write(str("OK").encode("utf-8"))
-        self.send_response(200)
-    else:
-        self.wfile.write(str("KO").encode("utf-8"))
-        self.send_response(404)
+    
     self.send_header('Content-Type', 'text/plain')
-    self.end_headers()
-
+    if status:
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(str("OK").encode("utf-8"))
+    else:
+        self.send_response(404)
+        self.end_headers()
+        self.wfile.write(str("KO").encode("utf-8"))
+    
 if __name__ == "__main__":
     server = HTTPServer(('', 8001), handler)
     server.url = 'http://localhost:{}'.format(server.server_port)
