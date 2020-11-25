@@ -14,9 +14,9 @@ class handler(BaseHTTPRequestHandler):
         url = 'https://api.trello.com/1/cards?key=c2d06be31329a6038f5e296a9759bd50&token=31609cd6094852d16850a30962bf8516f9f40b01fda773fa6f3a99d1eb72dc89&idList=5fbd68c43cd0dc77f36dcd50&name={}&desc={}'
 
         js = json.loads(body)
-        nom = "Famille {} {}".format(js['Prenom'], js['Nom'])
+        nom = "Famille de {}".format(js['PrenomNom'])
         
-        description = "{}\n{}\n\n\nDate réponse : {}".format(js['Prenom']+" " + js['Nom'], js['Invités'], js['Date'])
+        description = "{}\n{}\n\n\n{}\nDate réponse : {}".format(js['PrenomNom'], js['Invités'], js['Email'], js['Date'])
         url = url.format(urllib.parse.quote_plus(nom), urllib.parse.quote_plus(description))
         r = requests.post(url)
         if r:
