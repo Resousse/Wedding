@@ -16,7 +16,7 @@ class handler(BaseHTTPRequestHandler):
         js = json.loads(body)
         nom = "Famille {} {}".format(js['Prenom'], js['Nom'])
         
-        description = "{}\n{}\nDate réponse : {}".format(js['Prenom']+ js['Nom'], js['Invités'], js['Date'])
+        description = "{}\n{}\n\n\nDate réponse : {}".format(js['Prenom']+" " + js['Nom'], js['Invités'], js['Date'])
         url = url.format(urllib.parse.quote_plus(nom), urllib.parse.quote_plus(description))
         r = requests.post(url)
         if r:
