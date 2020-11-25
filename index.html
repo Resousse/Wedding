@@ -136,6 +136,30 @@ section {
 }
 </style>
 <script>
+
+function clickReponse(rep)
+	{
+		var jsonRep = {"Prenom" : $("#prenom").val(), "Nom": $("#nom").val(), "Statut" : rep, "Invités": $("#accompagnants").val(), "Date" : new Date().toUTCString()};
+
+		var xhr = new XMLHttpRequest()
+		var getUrl = window.location;
+		var baseurl = getUrl.protocol + "//" + getUrl.host;
+		xhr.open('POST', baseurl + "/api/repondreInvitation", true)
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.onload = function () {
+
+		if (xhr.status >= 200 && xhr.status < 400) {
+			alert("Votre réponse a bien été envoyée");
+			}
+		 else {
+			alert("Votre réponse n'a pas pu être envoyée, merci de reesayer ultérieurement");
+		}
+	}
+
+		xhr.send(JSON.stringify(jsonRep));
+		return false;
+	}
+
 $(document).ready(function() {
 	//$(".countdown").countdown({until: new Date(2020, 8, 8, 15, 0, 0), compact: true}).show().before("(").after(")");
 
@@ -233,8 +257,10 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+	
 	<section class="hero is-dark" style="position: fixed; top: 0; width: 100%; z-index: 20; background: none;">
 		<!-- Hero header: will stick at the top -->
+		
 		<div class="hero-head">
 			<header class="navbar is-transparent" style="box-shadow: none; background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 98%); background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 75%,rgba(0,0,0,0) 98%); background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 75%,rgba(0,0,0,0) 98%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);">
 				<div class="container">
@@ -269,7 +295,7 @@ $(document).ready(function() {
 						Accomodation
 						</a>
 						<a href="#rsvp" class="navbar-item">
-						RSVP
+						Carton de réponse
 						</a>
 					</div>
 				</div>
@@ -446,16 +472,43 @@ $(document).ready(function() {
 		</div>
 	</section>
 	<section class="hero is-info is-bold is-fullheight" id="rsvp" style="position: relative;">
+		
 		<div class="hero-body">
 			<div class="container has-text-centered">
 				<h1 class="title is-1" style="font-family: 'Satisfy', cursive; font-size: 5rem;">
-					RSVP
+					Carton de réponse
 				</h1>
 				<br/>
 				<div class="columns is-centered">
 					<div class="column is-10 is-8-desktop">
-						<p class="subtitle is-5">Our time has finally come, let us know if you will be able to join our celebration!</p>
-						<p><a href="mailto:raphadejr@gmail.com?subject=Mariage Jade et Raphael" class="button heartbeathover is-large is-danger">Let us know</a></p>
+						<p class="subtitle is-5">Pour nous répondre, vous pouvez remplir le formulaire ci-dessous ou bien renvoyer le carton réponse envoyé</p><br/>
+						Attention : Merci de nommer l'ensemble de vos invités, en raison du caractère militaire du fort, la sécurité risque de ne laisser passer que les gens inscrits sur une liste<br/><br/>
+						<form>
+							<div class="field is-grouped is-grouped-centered">
+								<div class="control">
+								  <input class="input" type="text" placeholder="Prenom" id='prenom'>
+								</div>
+								<div class="control">
+								  <input class="input" type="text" placeholder="Nom" id='nom'>
+								</div>
+							  </div>
+							  <div class="field">
+								<label class="label">Invités accompagnant</label>
+								<div class="control">
+								  <textarea class="textarea" id='accompagnants' placeholder="Textarea"></textarea>
+								</div>
+							  </div>
+							  <div class="field is-grouped is-grouped-centered">
+								<div class="control">
+								  <button type="button" class="button is-success is-light" onclick="clickReponse('Viennent')">On vient :)</button>
+								</div>
+								<div class="control">
+								  <button type="button" class="button is-danger is-light" onclick="clickReponse('Viennent pas')">On peut pas venir :(</button>
+								</div>
+							  </div>
+
+						</form><br/><br/>
+						<p><a href="mailto:raphadejr@gmail.com?subject=Mariage Jade et Raphael" class="button heartbeathover is-large is-danger">Nous contacter</a></p>
 						<br/><br/>
 						<span class="icon is-medium" style="opacity: 0.2">
 							<svg class="fa icon-diamond"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-diamond"></use></svg>
