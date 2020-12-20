@@ -21,19 +21,19 @@ class handler(BaseHTTPRequestHandler):
         r = requests.post(url)
         if r:
             rep = json.loads(r.text)
-            urllab = 'https://api.trello.com/1/cards/{}/idLabels?key=c2d06be31329a6038f5e296a9759bd50&token=31609cd6094852d16850a30962bf8516f9f40b01fda773fa6f3a99d1eb72dc89&value={}'
+            urllabbase = 'https://api.trello.com/1/cards/{}/idLabels?key=c2d06be31329a6038f5e296a9759bd50&token=31609cd6094852d16850a30962bf8516f9f40b01fda773fa6f3a99d1eb72dc89&value={}'
             if js['Statut'] == 'ViennentPas':
                 stat = '5fbd66ce1258da48af20be7f'
-                urllab = urllab.format(rep['id'], stat)
+                urllab = urllabbase.format(rep['id'], stat)
                 s = requests.post(urllab)
             else:
                 if 'Ceremonie' in js['Statut']:
                     stat = '5fbd66ce1258da48af20be79'
-                    urllab = urllab.format(rep['id'], stat)
+                    urllab = urllabbase.format(rep['id'], stat)
                     s = requests.post(urllab)
                 if 'Mairie' in js['Statut']:
                     stat = '5fbd66ce1258da48af20be7c'
-                    urllab = urllab.format(rep['id'], stat)
+                    urllab = urllabbase.format(rep['id'], stat)
                     s = requests.post(urllab)
             if s:
                 status = True
