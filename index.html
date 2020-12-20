@@ -191,7 +191,7 @@ $(document).ready(function() {
 		autoPlay: true
 	});
 
-	particlesJS("particles", {
+	particules = {
 		"particles": {
 			"number": {
 				"value": 160,
@@ -256,7 +256,10 @@ $(document).ready(function() {
 			}
 		},
 		"retina_detect": true
-	});
+	};
+
+	particlesJS("particles", particules);
+	particlesJS("particles2", particules);
 });
 </script>
 </head>
@@ -367,12 +370,13 @@ $(document).ready(function() {
 		<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2904.033111159645!2d5.362725858197021!3d43.2926282727826!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1e05fcb059bdfdbe!2sFort%20Ganteaume!5e0!3m2!1sfr!2sfr!4v1605633766936!5m2!1sfr!2sfr" frameborder="0" width="100%" height="100%" style="border:0; pointer-events: none; height: 100%; position: absolute; top:0; bottom:0;left:0;right:0;" allowfullscreen></iframe>
 	</section>
 	<section class="hero has-background-danger-light is-bold is-fullheight" id="mairie" style="position: relative;">
+		<div id="particles2" style="position: absolute; width: 100%; height: 100%; z-index: 0; max-height: 100vh;"></div>
 		<div class="hero-body">
 			<div class="container has-text-centered">
 				<h1 class="title is-1 has-text-danger-dark" style="font-family: 'Satisfy', cursive; font-size: 5rem;">
 					Le jour J : Mairie à Paris
 				</h1>
-				<div class="columns is-centered has-text-danger-dark">
+				<div class="columns is-centered">
 					<div class="column is-5 is-4-desktop">
 						<br/>
 						<span class="icon is-huge">
