@@ -98,6 +98,14 @@ section {
 	-webkit-animation: heart-beats 3s 1;
 	animation: heart-beats 3s 1;
 }
+
+.button.is-multiline {
+  min-height: 2.25em;
+  white-space: unset;
+  height: auto;
+  flex-direction: column;
+}
+
 @-webkit-keyframes bounce {
 	0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}	40% {-webkit-transform: translateY(-30px);}
 	60% {-webkit-transform: translateY(-15px);}
@@ -313,10 +321,10 @@ $(document).ready(function() {
 		<div class="hero-body">
 			<div class="container has-text-centered">
 				<img src='images/logo Raphade.png' style='max-height: 33vh;' />
-				<h1 class="title is-1" style="font-family: 'Satisfy', cursive; font-size: 5rem;color: #447083;">
+				<h1 class="title is-1" style="font-family: 'Satisfy', cursive; font-size: 5rem;color: #007995;">
 					Jade &amp; Raphael
 				</h1>
-				<h2 class="subtitle is-3" style="font-family: 'Satisfy', cursive; font-size: 3.33rem;color: #447083;">
+				<h2 class="subtitle is-3" style="font-family: 'Satisfy', cursive; font-size: 3.33rem;color: #007995;">
 					vont se marier !
 				</h2>
 			</div>
@@ -515,17 +523,17 @@ $(document).ready(function() {
 								  <textarea class="textarea" id='accompagnants' placeholder="Textarea"></textarea>
 								</div>
 							  </div>
-							  <div class="field is-grouped-multiline is-grouped is-grouped-centered is-centered is-multiline">
-								<div class="control is-centered is-multiline">
+							  <div class="field is-grouped-multiline is-grouped is-grouped-centered is-centered">
+								<div class="buttons is-centered is-multiline">
 									<button type="button" class="button is-success is-light is-centered is-multiline" onclick="clickReponse('ViennentMairieCeremonie')">On vient à la cérémonie (Marseille) et à la mairie (Paris) :)</button>
 								  </div>
-								<div class="control is-centered is-multiline">
+								<div class="buttons is-centered is-multiline">
 								  <button type="button" class="button is-info is-light is-centered is-multiline" onclick="clickReponse('ViennentCeremonie')">On vient à la cérémonie (Marseille) :)</button>
 								</div>
-								<div class="control is-centered is-multiline">
+								<div class="buttons is-centered is-multiline">
 									<button type="button" class="button is-info is-light" onclick="clickReponse('ViennentMairie')">On vient à la mairie (Paris) :)</button>
 								  </div>
-								<div class="control is-centered is-multiline">
+								<div class="buttons is-centered is-multiline">
 								  <button type="button" class="button is-danger is-light" onclick="clickReponse('ViennentPas')">On peut pas venir :(</button>
 								</div>
 							  </div>
