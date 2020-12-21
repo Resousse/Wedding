@@ -15,7 +15,8 @@ class handler(BaseHTTPRequestHandler):
 
         js = json.loads(body)
         nom = "Famille de {}".format(js['PrenomNom'])
-        
+        if len(js['PrenomNom']) < 5 or len(js['Email']) < 5 :
+            raise Exception()
         description = "{}\n{}\n\n\n{}\nDate réponse : {}".format(js['PrenomNom'], js['Invités'], js['Email'], js['Date'])
         url = url.format(urllib.parse.quote_plus(nom), urllib.parse.quote_plus(description))
         r = requests.post(url)
